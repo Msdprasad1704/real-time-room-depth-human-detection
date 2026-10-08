@@ -70,7 +70,9 @@ Screenshots are stored in:
 
 ### Real-Time Human Detection and Depth Estimation
 
-![Real-Time Depth Estimation Output](assets/sample-output.png)
+![Real-Time Depth Estimation Output](assets/webcam_20261008_090559_73406.png)
+
+The system detects humans using YOLOv8 and generates a relative depth map using MiDaS.
 
 
 The system detects humans using YOLOv8 and generates a relative depth map using MiDaS.
