@@ -1,104 +1,79 @@
-# Real-Time Room Depth Estimation and Human Detection Using YOLOv8
+# Real-Time Room Depth Estimation and Human Detection
 
-## Abstract
-This project combines human detection with monocular depth estimation to estimate the relative depth of people in a room using a standard webcam. It uses YOLOv8 for person detection and a pretrained monocular depth model from MiDaS to generate a depth map. The system displays the live camera view, bounding boxes around detected humans, confidence values, and a depth heatmap in real time.
+A real-time Deep Learning and Computer Vision application that detects humans and estimates relative room depth using a standard webcam.
 
-## Problem statement
-In many indoor environments, identifying humans and estimating their spatial position relative to the camera is useful for surveillance, safety monitoring, and interaction systems. Traditional depth sensors are expensive, while monocular depth estimation using a single camera is low-cost and accessible. However, without camera calibration, monocular depth only provides relative depth information rather than exact physical distances.
+The system combines **YOLOv8** for human detection and **MiDaS** for monocular depth estimation. It provides real-time visualization through bounding boxes, depth information, heatmaps, person tracking, screenshots, video recording, and CSV reports.
 
-## Objectives
+---
+
+## 📌 Project Overview
+
+The system uses a standard RGB webcam to understand the indoor environment.
+
+It performs two major tasks:
+
+1. Detect humans in the camera frame using YOLOv8.
+2. Estimate relative depth using the MiDaS monocular depth-estimation model.
+
+The detected humans are displayed with bounding boxes, confidence scores, tracking information, and relative depth values.
+
+A colorized depth heatmap is also generated to visualize the approximate depth structure of the scene.
+
+> **Note:** MiDaS provides relative depth estimation. It does not directly provide exact physical distance in meters unless the system is calibrated.
+
+---
+
+## 🎯 Objectives
+
 - Detect humans in real time using YOLOv8.
-- Estimate relative room depth with a pretrained monocular depth model.
-- Generate a visual depth heatmap.
-- Show depth values for each detected human.
-- Display live results from a webcam or a still image.
-- Support CPU execution as well as CUDA acceleration when available.
+- Estimate relative room depth using MiDaS.
+- Generate a real-time depth heatmap.
+- Calculate relative depth for detected people.
+- Track detected people.
+- Display confidence and depth information.
+- Support webcam and image input.
+- Generate screenshots.
+- Record processed video.
+- Generate CSV reports.
+- Support CPU and CUDA-enabled GPU execution when available.
 
-## Existing system
-Most conventional systems depend on dedicated depth sensors, such as LiDAR or RGB-D cameras, to estimate distance. These systems are expensive, harder to deploy, and may not be practical for everyday room monitoring. Some systems also rely on fixed camera calibration or manual distance mapping.
+---
 
-## Proposed system
-The proposed system uses a standard RGB webcam and a pretrained deep learning pipeline to detect people and estimate relative depth from the scene. The application draws bounding boxes, annotates confidence scores, calculates a mean depth value within each detected human region, and overlays the result on the live frame.
+## ✨ Key Features
 
-## System architecture
-The application architecture includes:
-1. Input acquisition from webcam or image.
-2. Human detection using YOLOv8.
-3. Monocular depth estimation using a pretrained MiDaS model.
-4. Relative depth extraction for each detected person.
-5. Visualization through annotated frames and a heatmap.
-6. Optional output saving of captured frames.
+### 👤 Human Detection
 
-## Methodology
-The project follows a sequence of steps:
-- Capture a frame from the webcam or read an input image.
-- Run YOLOv8 to detect person instances.
-- Crop each detected person region and compute the mean depth from the depth map.
-- Normalize the depth map for visualization.
-- Overlay bounding boxes and labels with confidence and relative depth values.
-- Display the original frame and depth heatmap in real time.
+Uses YOLOv8 to detect people in real time.
 
-## Algorithms
-- YOLOv8 object detection algorithm for human recognition.
-- Monocular depth estimation through a pretrained MiDaS backbone.
-- Depth normalization and heatmap generation using OpenCV color mapping.
-- Region-based depth aggregation by averaging depth values inside each bounding box.
+### 📏 Relative Depth Estimation
 
-## Technologies used
-- Python
-- OpenCV
-- PyTorch
-- Ultralytics YOLOv8
-- NumPy
-- Pathlib
-- pytest
+Uses the pretrained MiDaS model to estimate the relative depth of objects and people.
 
-## Installation
-1. Open a terminal in the project folder.
-2. Create the virtual environment:
-   python -m venv .venv
-3. Activate it:
-   .\.venv\Scripts\Activate.ps1
-4. Upgrade pip:
-   python -m pip install --upgrade pip
-5. Install dependencies:
-   pip install -r requirements.txt
+### 🌡️ Depth Heatmap
 
-## Execution
-Run the webcam version:
-python main.py --webcam
+Generates a colorized heatmap representing the relative depth structure of the scene.
 
-Run with a still image:
-python main.py --input "path/to/image.jpg"
+### 🆔 Person Tracking
 
-Controls:
-- Q: quit the application
-- S: save the current frame
+Detected people can be tracked across video frames.
 
-## Expected output
-The output window shows:
-- Original camera frame with detected humans in green boxes
-- Confidence score and relative depth for each person
-- A colorized depth heatmap of the room
-- Real-time processing of the live scene
+### 📊 Depth Information
 
-## Advantages
-- Uses a low-cost webcam instead of a depth sensor
-- Works in real time with CPU or GPU support
-- Simple and practical for indoor monitoring
-- Good for proof-of-concept and research deployments
+Displays relative depth information for detected people.
 
-## Limitations
-- Monocular depth is relative and not exact metric depth without camera calibration.
-- Depth estimates can be less accurate under poor lighting or ambiguous scenes.
-- The model may struggle with unusual camera viewpoints or heavily occluded humans.
+### 📸 Screenshot Capture
 
-## Future scope
-- Add camera calibration for metric depth estimation
-- Improve depth accuracy with multi-frame fusion
-- Extend detection to other objects and scenarios
-- Integrate with a web dashboard or cloud backend
-- Optimize for edge deployment
+Press `S` to save the current processed frame.
 
-## Conclusion
-This project demonstrates a practical AI-based system for real-time room depth estimation and person detection using a standard webcam. By combining YOLOv8 and pretrained monocular depth estimation, it provides an accessible and scalable solution for indoor perception tasks. The system estimates relative depth values rather than absolute physical distances unless camera calibration is performed.
+Screenshots are stored in:
+## 📸 Sample Output
+
+### Real-Time Human Detection and Depth Estimation
+
+![Real-Time Depth Estimation Output](assets/sample-output.png)
+
+
+The system detects humans using YOLOv8 and generates a relative depth map using MiDaS.
+
+```text
+outputs/screenshots/
