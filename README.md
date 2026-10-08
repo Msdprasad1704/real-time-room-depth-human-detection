@@ -66,16 +66,20 @@ Displays relative depth information for detected people.
 Press `S` to save the current processed frame.
 
 Screenshots are stored in:
+
+```text
+outputs/screenshots/
 ## 📸 Sample Output
 
 ### Real-Time Human Detection and Depth Estimation
 
 ![Real-Time Depth Estimation Output](assets/webcam_20261008_090559_73406.png)
 
-The system detects humans using YOLOv8 and generates a relative depth map using MiDaS.
+The sample output shows:
 
-
-The system detects humans using YOLOv8 and generates a relative depth map using MiDaS.
-
-```text
-outputs/screenshots/
+- 👤 Human detection using YOLOv8
+- 🟩 Bounding box around the detected person
+- 📊 Detection confidence
+- 📏 Relative depth information
+- 🌈 MiDaS depth heatmap
+- ⚡ Real-time webcam processing
