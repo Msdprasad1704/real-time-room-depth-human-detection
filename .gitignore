@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+models/midas_small.pt
+models/torch_hub/
+outputs/screenshots/
+outputs/videos/
+outputs/reports/
+*.pt
+*.pth
+.env
+.vscode/
