@@ -66,9 +66,6 @@ Displays relative depth information for detected people.
 Press `S` to save the current processed frame.
 
 Screenshots are stored in:
-
-```text
-outputs/screenshots/
 ## 📸 Sample Output
 
 ### Real-Time Human Detection and Depth Estimation
@@ -83,3 +80,7 @@ The sample output shows:
 - 📏 Relative depth information
 - 🌈 MiDaS depth heatmap
 - ⚡ Real-time webcam processing
+
+```text
+outputs/screenshots/
+## 📸 Sample Output
